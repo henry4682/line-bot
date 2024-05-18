@@ -15,6 +15,11 @@ load_dotenv()
 line_bot_api = LineBotApi(os.environ.get('line_api'))
 handler = WebhookHandler(os.environ.get('handler'))
 
+@app.route('/')
+@app.route('/index')
+def index():
+    return 'Hello World'
+
 @app.route('/callback', methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
